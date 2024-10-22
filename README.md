@@ -212,6 +212,8 @@ JWT tokens contain the following claims:
 
 ## JSON Schemas
 
+All the APIs that require a body are check by jsonschemas to ensure the structure of the request is well formed. For example, user creation API is checked by the below jsonschema.
+
 **User Creation Schema**:
 ```json
 {
