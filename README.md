@@ -58,7 +58,8 @@ This project is a Flask-based web application that provides a **user management*
 6. Run the application:
 
     ```bash
-    python app.py
+    export FLASK_APP=userbase.app
+    flask run
     ```
 
 ---
