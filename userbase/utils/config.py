@@ -1,10 +1,12 @@
 import json
 import os
 
+CONFIG_PATH = os.getenv('CONFIG_PATH', './config/app_config.json')
+
 class Config:
     _instance = None
 
-    def __new__(cls, config_file_path='./config/app_config.json'):
+    def __new__(cls, config_file_path=CONFIG_PATH):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance._load_config(config_file_path)

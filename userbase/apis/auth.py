@@ -8,6 +8,7 @@ from userbase.utils.api_schemas import validate_json, auth_login_schema
 auth_bp = Blueprint('auth_bp', __name__)
 
 @auth_bp.route('/login', methods=['POST'])
+@validate_json(auth_login_schema)
 def login():
     data = request.get_json()
     username = data.get('username')
@@ -22,7 +23,6 @@ def login():
 
 
 @auth_bp.route('/admin', methods=['POST'])
-@validate_json(auth_login_schema)
 def admin_login():
     provided_secret = request.args.get('secret')
 
