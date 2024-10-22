@@ -13,5 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose the application port
 EXPOSE 5000
 
-# Use Gunicorn to serve the app using the factory function
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "userbase:create_app()"]
+# Set environment variables for Flask
+ENV FLASK_APP=userbase:create_app()
+ENV FLASK_ENV=production
+
+# Run database migrations and start the Flask server
+CMD ["sh", "-c", "flask db upgrade && flask run --host=0.0.0.0 --port=5000"]
