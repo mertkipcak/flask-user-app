@@ -14,8 +14,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Set environment variables for Flask
-ENV FLASK_APP=app.py
+ENV FLASK_APP=userbase:create_app()
 ENV FLASK_ENV=production
 
 # Run database migrations and start the Flask server
-CMD flask db upgrade && flask run --host=0.0.0.0 --port=5000
+CMD ["sh", "-c", "flask db upgrade && flask run --host=0.0.0.0 --port=5000"]
